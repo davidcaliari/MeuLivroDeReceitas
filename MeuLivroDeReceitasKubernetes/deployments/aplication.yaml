@@ -1,0 +1,76 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name:  myrecipebooknamespace
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  myrecipebookapi
+  namespace: myrecipebooknamespace
+  labels:
+    app:  myrecipebookapi
+spec:
+  selector:
+    matchLabels:
+      app: myrecipebookapi
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app:  myrecipebookapi
+    spec:
+      # initContainers:
+        # Init containers are exactly like regular containers, except:
+          # - Init containers always run to completion.
+          # - Each init container must complete successfully before the next one starts.
+      containers:
+      - name:  myrecipebookapi
+        image:  davidcaliari/myrecipebookapi:latest
+        resources:
+          requests:
+            cpu: 500m
+            memory: 500Mi
+          limits:
+            cpu: 500m
+            memory: 500Mi
+        env:
+        # - name: ASPNETCORE_URLS
+        #   value: http://+:8080
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Development
+        ports:
+        - containerPort:  8080
+          name:  http-web-svc
+        - containerPort:  6443
+          name:  https-web-svc
+        volumeMounts:
+        - name: localtime
+          mountPath: /etc/localtime
+      volumes:
+        - name: localtime
+          hostPath:
+            path: /usr/share/zoneinfo/Asia/Shanghai
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name:  myrecipebookapi-service
+  namespace: myrecipebooknamespace
+spec:
+  selector:
+    app:  myrecipebookapi
+  type:  LoadBalancer
+  ports:
+  - name:  http
+    protocol: TCP
+    port:  8080
+    targetPort:  8080
+  - name:  https
+    protocol: TCP
+    port:  6443
+    targetPort:  6443
