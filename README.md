@@ -152,7 +152,7 @@ Caso o **Docker** não esteja instalado, siga os passos abaixo para instalá-lo:
 
 ### 2. Executar em um Container Docker
 
-
+1. Abra o terminal e navegue até a pasta raiz do projeto, onde o arquivo `Dockerfile` está localizado.
 - Para executar a aplicação com entrada manual:
   ```bash
   docker build -t nubk_case . && docker run -it nubk_case
