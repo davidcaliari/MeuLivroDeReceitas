@@ -36,6 +36,7 @@ Nubk_Case/
     │   └── OperationTests/
     │       └── OperationApplicationTest.cs
 
+```
 
 ---
 
@@ -49,6 +50,7 @@ Nubk_Case/
 
    ```bash
    dotnet run
+   ```
 
 -------------------------------------------------------
 
