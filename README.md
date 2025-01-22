@@ -90,7 +90,7 @@ Caso o **.NET SDK** não esteja instalado, siga os passos abaixo para instalá-l
    dotnet run < input.txt
    ```
    - **Nota**: Onde input.txt é o arquivo que contém os dados no formato esperado pela aplicação (exemplo em JSON). Este comando executará a aplicação e fornecerá o conteúdo do arquivo input.txt como entrada para o processo. O arquivo deve estar na pasta onde se encontra o arquivo `Nubk_Case.csproj`.
-6. Para encerrar a aplicação, pressione **Enter** sem inserir nenhum input.
+7. Para encerrar a aplicação, pressione **Enter** sem inserir nenhum input.
 
 ---
 
@@ -132,14 +132,22 @@ Caso o **Docker** não esteja instalado, siga os passos abaixo para instalá-lo:
 
 1. Certifique-se de que o **Docker Desktop** está em execução.
 2. Navegue até a pasta onde o arquivo `Dockerfile` está localizado.
-3. Construa a imagem Docker e inicie o container com o comando:
+3. Caso deseje inserir manualmente, construa a imagem Docker e inicie o container com o comando:
 
    ```bash
-   docker build -t nubk_case .docker build -t nubk_case . && docker run -it nubk_case
+   docker build -t nubk_case . && docker run -it nubk_case
    ```
+4. Insira o input no formato esperado e pressione **Enter**.
+   - **Nota**: Certifique-se de que o texto do input está em uma única linha, pois ao copiar do PDF ele pode ficar formatado incorretamente.
+5. Após o resultado ser exibido, a tela irá aguardar o pressionamento de **Enter** para ser limpa e em seguida um novo input poderá ser inserido.
+6. Para executar a aplicação com um arquivo de entrada, execute o comando:
+ Para executar a aplicação com um arquivo de entrada, execute o comando:
 
-5. Insira o input no formato esperado e pressione **Enter**.
-6. Para encerrar a aplicação, pressione **Enter** sem inserir nenhum input.
+```bash
+   docker build -t nubk_case . && docker run -i nubk_case < Nubk_Case/input.txt
+   ```
+   - **Nota**: Onde input.txt é o arquivo que contém os dados no formato esperado pela aplicação (exemplo em JSON). Este comando executará a aplicação e fornecerá o conteúdo do arquivo input.txt como entrada para o processo. O arquivo deve estar na pasta onde se encontra o arquivo `Nubk_Case.csproj`.
+7. Para encerrar a aplicação, pressione **Enter** sem inserir nenhum input.
 
 ---
 
