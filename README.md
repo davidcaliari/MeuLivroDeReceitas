@@ -2,13 +2,14 @@
 
 ## Introdução
 
-Esta solução foi desenvolvida em .NET Core C#, utilizando uma abordagem baseada em DDD (Domain-Driven Design). Essa escolha facilita a organização e a clareza dos casos de uso e domínios da aplicação, seguindo também princípios de **Clean Code** para garantir legibilidade e manutenibilidade.
+Esta solução foi desenvolvida em .NET Core C#, utilizando uma abordagem baseada em DDD (Domain-Driven Design). Essa escolha facilita a organização e a clareza dos casos de uso e domínios da aplicação, seguindo também princípios de **Clean Code** e **Clean Architecture** para garantir legibilidade e manutenibilidade.
 
 A estrutura do projeto está organizada em:
 
 - **Application**: Contém as regras de negócio para cada caso de uso e domínio. Inclui também objetos auxiliares, como DTOs, Responses, e classes de execução.
 - **Domain**: Contém os modelos de domínio, interfaces e agregações. Em projetos maiores, outras camadas, como API e Infrastructure, poderiam ser adicionadas.
 
+Obs: Em projetos maiores, camadas adicionais como **Infrastructure** e **API** podem ser adicionadas.
 ---
 
 ## Estrutura do Projeto
@@ -31,11 +32,20 @@ Nubk_Case/
 │
 └── Nubk_CaseTest/
     ├── IntegrationTests/
-    │   └── ProgramTests.cs
-    ├── UnitTests/
     │   └── OperationTests/
     │       └── OperationApplicationTest.cs
+	├── UnitTests/
+    │   └── ProgramTests/
+    │       └── ProgramTest.cs
 ```
+
+---
+
+## Tecnologias Utilizadas
+
+- .NET Core C#
+- Docker
+- Testes Unitários com `dotnet test` and `xUnit`
 
 ---
 
@@ -100,7 +110,7 @@ Caso o **Docker** não esteja instalado, siga os passos abaixo para instalá-lo:
 
 ---
 
-### 2. Executar os Testes
+### 2. Executar os Testes de Unidade e Integração
 
 1. Navegue até a pasta onde o arquivo `Nubk_CaseTest.csproj` está localizado.
 2. Execute o comando:
@@ -154,22 +164,4 @@ Consulte a lista completa de exemplos fornecida inicialmente.
 
 ---
 
-## Estrutura de Desenvolvimento
 
-O projeto utiliza DDD para separar responsabilidades, tornando o código mais claro e de fácil manutenção. As principais camadas são:
-
-1. **Application**:
-   - Regras de negócio e casos de uso.
-   - Classes auxiliares como DTOs e Responses.
-2. **Domain**:
-   - Modelos de domínio e contratos.
-
-Em projetos maiores, camadas adicionais como **Infrastructure** e **API** podem ser adicionadas.
-
----
-
-## Tecnologias Utilizadas
-
-- .NET Core C#
-- Docker
-- Testes Unitários com `dotnet test` and `xUnit`
