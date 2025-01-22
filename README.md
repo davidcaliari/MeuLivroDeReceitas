@@ -1,4 +1,3 @@
-
 # Nubk Case - Documentação do Projeto
 
 ## Introdução
@@ -37,6 +36,48 @@ Nubk_Case/
     │   └── OperationTests/
     │       └── OperationApplicationTest.cs
 ```
+
+---
+
+## Como Preparar o Ambiente de Execução
+
+### 1. Instalar o .NET SDK
+
+Caso o **.NET SDK** não esteja instalado, siga os passos abaixo para instalá-lo:
+
+1. Acesse o site oficial do .NET:  
+   [https://dotnet.microsoft.com/download](https://dotnet.microsoft.com/download)
+
+2. Baixe e instale a versão compatível do .NET SDK para o seu sistema operacional.
+
+3. Após a instalação, abra o terminal e verifique se o .NET SDK foi instalado corretamente executando o comando:
+
+   ```bash
+   dotnet --version
+   ```
+
+   Caso uma versão seja exibida, o .NET SDK está configurado corretamente.
+
+---
+
+### 2. Instalar o Docker
+
+Caso o **Docker** não esteja instalado, siga os passos abaixo para instalá-lo:
+
+1. Acesse o site oficial do Docker:  
+   [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
+
+2. Baixe e instale o **Docker Desktop** para o seu sistema operacional.
+
+3. Após a instalação, abra o **Docker Desktop** e certifique-se de que ele está em execução.
+
+4. Para confirmar que o Docker foi instalado corretamente, execute o comando no terminal:
+
+   ```bash
+   docker --version
+   ```
+
+   Caso uma versão seja exibida, o Docker está configurado corretamente.
 
 ---
 
@@ -131,78 +172,4 @@ Em projetos maiores, camadas adicionais como **Infrastructure** e **API** podem 
 
 - .NET Core C#
 - Docker
-- Testes Unitários com `dotnet test`
-
-
----
-
-##Documentação do proejto
-Para a solução proposta no case eu escolhi a stack .net core C# por ter mais familiaridade.
-Para arquitetura da solução foi criado utilizando DDD por dar mais clareza em relação aos caso de uso e dominios da da aplicação, assim como clean code para apoiar na clareza organização e legibilidade do código fazendo a separação da aplicação 
-nas seguintes pasta:
-Application: Ira conter as regras de negócio de cada caso de uso e de cada dominio, nela também é criado tudo aquilo necessário para a chamada da mesma tal como Dto, Response e a propria application de execução.
-Domain: Ira conter os modelos de dominio, interfaces, modelos de agregação.
-Em projetos mais complexos ainda teriamos outras camadas como API, Infrastructure entre outras
-
-#Documentação para execução do Projeto
-
-Para executar a aplicação siga os passos abaixo:
-1 - Executar o CMD na pasta onde se encontrato o projeto "Nubk_Case.csproj"
-2 - Executar o comando: dotnet run
-3 - Agora é só colar o input e pressionar enter, porém o texto do input deve estar em uma linha, ao copiar do PDF o mesmo fica errado, mais abaixo tem exemplos de input. 
-4 - Ao pressionar enter apoós o resultado a tela será limpa e permitirá incluir um novo input
-5 - Caso seja pressionado enter sem passar qualquer input a aplicação irá se encerrar
-
-Para executar os testes unitario siga os passos abaixo?
-1 - Executar o CMD na pasta onde se encontrato o projeto de testes "Nubk_CaseTest.csproj"
-2 - Executar o comando: dotnet test
-
-Para executar a aplicação dentro de um container siga os passos abaixo:
-1 - Garantir que o Docker Desktop esta rodando
-2 - Executar o CMD na pasta onde se encontrato o arquivo "Dockerfile"
-3 - Executar o comando: docker build -t NubankCase .
-4 - Executar o comando: docker run
-5 - Agora é só colar o input e pressionar enter, porém o texto do input deve estar em uma linha, ao copiar do PDF o mesmo fica errado, mais abaixo tem exemplos de input.
-6 - Ao pressionar enter apoós o resultado a tela será limpa e permitirá incluir um novo input
-7 - Caso seja pressionado enter sem passar qualquer input a aplicação irá se encerrar
-
-Segue exemplos de inputs corretos:
-Case 1
-[{"operation":"buy", "unit-cost":10.00, "quantity": 100}, {"operation":"sell", "unit-cost":15.00, "quantity": 50}, {"operation":"sell", "unit-cost":15.00, "quantity": 50}]
-
-Case 2
-[{"operation":"buy", "unit-cost":10.00, "quantity": 10000}, {"operation":"sell", "unit-cost":20.00, "quantity": 5000}, {"operation":"sell", "unit-cost":5.00, "quantity": 5000}]
-
-Case 1 + Case 2
-[{"operation":"buy", "unit-cost":10.00, "quantity": 100}, {"operation":"sell", "unit-cost":15.00, "quantity": 50}, {"operation":"sell", "unit-cost":15.00, "quantity": 50}] [{"operation":"buy", "unit-cost":10.00, "quantity": 10000}, {"operation":"sell", "unit-cost":20.00, "quantity": 5000}, {"operation":"sell", "unit-cost":5.00, "quantity": 5000}]
-
-Case 3
-[{"operation":"buy", "unit-cost":10.00, "quantity": 10000}, {"operation":"sell", "unit-cost":5.00, "quantity": 5000}, {"operation":"sell", "unit-cost":20.00, "quantity": 3000}]
-
-Case 4
-[{"operation":"buy", "unit-cost":10.00, "quantity": 10000}, {"operation":"buy", "unit-cost":25.00, "quantity": 5000}, {"operation":"sell", "unit-cost":15.00, "quantity": 10000}]
-
-Case 5
-[{"operation":"buy", "unit-cost":10.00, "quantity": 10000}, {"operation":"buy", "unit-cost":25.00, "quantity": 5000}, {"operation":"sell", "unit-cost":15.00, "quantity": 10000}, {"operation":"sell", "unit-cost":25.00, "quantity": 5000}]
-
-Case 6
-[{"operation":"buy", "unit-cost":10.00, "quantity": 10000}, {"operation":"sell", "unit-cost":2.00, "quantity": 5000}, {"operation":"sell", "unit-cost":20.00, "quantity": 2000}, {"operation":"sell", "unit-cost":20.00, "quantity": 2000}, {"operation":"sell", "unit-cost":25.00, "quantity": 1000}]
-
-Case 7
-[{"operation":"buy", "unit-cost":10.00, "quantity": 10000}, {"operation":"sell", "unit-cost":2.00, "quantity": 5000}, {"operation":"sell", "unit-cost":20.00, "quantity": 2000}, {"operation":"sell", "unit-cost":20.00, "quantity": 2000}, {"operation":"sell", "unit-cost":25.00, "quantity": 1000}, {"operation":"buy", "unit-cost":20.00, "quantity": 10000}, {"operation":"sell", "unit-cost":15.00, "quantity": 5000}, {"operation":"sell", "unit-cost":30.00, "quantity": 4350}, {"operation":"sell", "unit-cost":30.00, "quantity": 650}]
-
-Case 8
-[{"operation":"buy", "unit-cost":10.00, "quantity": 10000}, {"operation":"sell", "unit-cost":50.00, "quantity": 10000}, {"operation":"buy", "unit-cost":20.00, "quantity": 10000}, {"operation":"sell", "unit-cost":50.00, "quantity": 10000}]
-
-
-=======
-## Build
-```
-docker-compose up -d --build
-```
-
-
-## Run
-```
-docker-compose run nubkteste01
-```
+- Testes Unitários com `dotnet test` and `xUnit`
