@@ -50,6 +50,14 @@ Nubk_Case/
 
 ---
 
+### Pré-requisitos
+
+- Docker versão 20.10 ou superior.
+- .NET SDK versão 8.0 ou superior.
+- Terminal que suporte redirecionamento de entrada (`stdin`) e/ou TTY.
+
+---
+
 ## Como Preparar o Ambiente para Execução Local
 
 ### 1. Instalar o .NET SDK
@@ -73,26 +81,26 @@ Caso o **.NET SDK** não esteja instalado, siga os passos abaixo para instalá-l
 
 ### 2. Executar Localmente
 
-- **Nota**: Para facilitar os testes de quem estiver avaliando, a solução permite que instruções sejam passadas sem a necessidade de finalizar a aplicação.
+Para facilitar os testes de quem estiver avaliando, a solução irá permitir que sejam passadas instruções sem finalizar a aplicação.
 
-1. Abra o terminal (CMD, PowerShell ou equivalente).
-2. Navegue até a pasta onde o arquivo `Nubk_Case.csproj` está localizado.
-3. Caso deseje inserir manualmente, execute apenas:
+1. Abra o terminal e navegue até a pasta onde o arquivo `Nubk_Case.csproj` está localizado.
+2. Para inserir os dados manualmente, execute:
 
    ```bash
    dotnet run
    ```
 
-4. Insira o input no formato esperado e pressione **Enter**.
-   - **Nota**: Certifique-se de que o texto do input está em uma única linha, pois ao copiar do PDF ele pode ficar formatado incorretamente.
-5. Após o resultado ser exibido, a tela irá aguardar o pressionamento de **Enter** para ser limpa e em seguida um novo input poderá ser inserido.
-6. Para executar a aplicação com um arquivo de entrada, execute o comando:
+   Em seguida, insira os dados no formato esperado e pressione Enter.
 
-```bash
+3. Para usar um arquivo de entrada, execute:
+
+   ```bash
    dotnet run < input.txt
-```
-   - **Nota**: Onde input.txt é o arquivo que contém os dados no formato esperado pela aplicação (exemplo em JSON). Este comando executará a aplicação e fornecerá o conteúdo do arquivo input.txt como entrada para o processo. O arquivo deve estar na pasta onde se encontra o arquivo `Nubk_Case.csproj`.
-7. Para encerrar a aplicação, pressione **Enter** sem inserir nenhum input.
+   ```
+
+   - **Nota**: O arquivo `input.txt` deve conter os dados no formato esperado pela aplicação e estar na mesma pasta onde o comando está sendo executado juntamente com o arquivo `Nubk_Case.csproj`.
+
+4. Para encerrar a aplicação, pressione Enter sem inserir nenhum dado.
 
 ---
 
@@ -104,6 +112,18 @@ Caso o **.NET SDK** não esteja instalado, siga os passos abaixo para instalá-l
    ```bash
    dotnet test
    ```
+
+---
+
+## Criando o Arquivo de Entrada
+
+O arquivo de entrada `input.txt` deve conter o JSON com as operações no formato esperado. Certifique-se de que ele está na mesma pasta onde você executará o comando.
+
+Exemplo de conteúdo para `input.txt`:
+
+```json
+[{"operation":"buy", "unit-cost":10.00, "quantity":100}, {"operation":"sell", "unit-cost":15.00, "quantity":50}]
+```
 
 ---
 
@@ -132,23 +152,21 @@ Caso o **Docker** não esteja instalado, siga os passos abaixo para instalá-lo:
 
 ### 2. Executar em um Container Docker
 
-1. Certifique-se de que o **Docker Desktop** está em execução.
-2. Navegue até a pasta onde o arquivo `Dockerfile` está localizado.
-3. Caso deseje inserir manualmente, construa a imagem Docker e inicie o container com o comando:
 
-   ```bash
-   docker build -t nubk_case . && docker run -it nubk_case
-   ```
-4. Insira o input no formato esperado e pressione **Enter**.
-   - **Nota**: Certifique-se de que o texto do input está em uma única linha, pois ao copiar do PDF ele pode ficar formatado incorretamente.
-5. Após o resultado ser exibido, a tela irá aguardar o pressionamento de **Enter** para ser limpa e em seguida um novo input poderá ser inserido.
-6. Para executar a aplicação com um arquivo de entrada, execute o comando:
+- Para executar a aplicação com entrada manual:
+  ```bash
+  docker build -t nubk_case . && docker run -it nubk_case
+  ```
 
-```bash
-   docker build -t nubk_case . && docker run -i nubk_case < Nubk_Case/input.txt
-```
-   - **Nota**: Onde input.txt é o arquivo que contém os dados no formato esperado pela aplicação (exemplo em JSON). Este comando executará a aplicação e fornecerá o conteúdo do arquivo input.txt como entrada para o processo. O arquivo deve estar na pasta onde se encontra o arquivo `Nubk_Case.csproj`.
-7. Para encerrar a aplicação, pressione **Enter** sem inserir nenhum input.
+- Para executar a aplicação com um arquivo de entrada:
+  ```bash
+  docker build -t nubk_case . && docker run -i nubk_case < Nubk_Case/input.txt
+  ```
+
+  - **Nota**: Certifique-se de que o terminal suporta redirecionamento de entrada. No Windows, use `winpty` no terminal Git Bash:
+    ```bash
+    winpty docker run -i nubk_case < Nubk_Case/input.txt
+    ```
 
 ---
 
@@ -174,3 +192,10 @@ Consulte a lista completa de exemplos fornecida inicialmente.
 
 ---
 
+## Possíveis Erros e Soluções
+
+- **Erro**: `the input device is not a TTY`
+  - **Solução**: No Windows, use `winpty` no terminal Git Bash:
+    ```bash
+    winpty docker run -i nubk_case < Nubk_Case/input.txt
+    ```
