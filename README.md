@@ -1,3 +1,4 @@
+
 # Nubk Case - Documentação do Projeto
 
 ## Introdução
@@ -35,7 +36,6 @@ Nubk_Case/
     ├── UnitTests/
     │   └── OperationTests/
     │       └── OperationApplicationTest.cs
-
 ```
 
 ---
@@ -52,9 +52,91 @@ Nubk_Case/
    dotnet run
    ```
 
--------------------------------------------------------
+4. Insira o input no formato esperado e pressione **Enter**.
+   - **Nota**: Certifique-se de que o texto do input está em uma única linha, pois ao copiar do PDF ele pode ficar formatado incorretamente.
+5. Após o resultado ser exibido, a tela será limpa e um novo input poderá ser inserido.
+6. Para encerrar a aplicação, pressione **Enter** sem inserir nenhum input.
 
-#Documentação do proejto
+---
+
+### 2. Executar os Testes
+
+1. Navegue até a pasta onde o arquivo `Nubk_CaseTest.csproj` está localizado.
+2. Execute o comando:
+
+   ```bash
+   dotnet test
+   ```
+
+---
+
+### 3. Executar em um Container Docker
+
+1. Certifique-se de que o **Docker Desktop** está em execução.
+2. Navegue até a pasta onde o arquivo `Dockerfile` está localizado.
+3. Construa a imagem Docker com o comando:
+
+   ```bash
+   docker build -t nubk_case .
+   ```
+
+4. Inicie o container com o comando:
+
+   ```bash
+   docker run -it nubk_case
+   ```
+
+5. Insira o input no formato esperado e pressione **Enter**.
+6. Para encerrar a aplicação, pressione **Enter** sem inserir nenhum input.
+
+---
+
+## Exemplos de Inputs Válidos
+
+### Case 1
+```json
+[{"operation":"buy", "unit-cost":10.00, "quantity": 100}, {"operation":"sell", "unit-cost":15.00, "quantity": 50}, {"operation":"sell", "unit-cost":15.00, "quantity": 50}]
+```
+
+### Case 2
+```json
+[{"operation":"buy", "unit-cost":10.00, "quantity": 10000}, {"operation":"sell", "unit-cost":20.00, "quantity": 5000}, {"operation":"sell", "unit-cost":5.00, "quantity": 5000}]
+```
+
+### Case 3
+```json
+[{"operation":"buy", "unit-cost":10.00, "quantity": 10000}, {"operation":"sell", "unit-cost":5.00, "quantity": 5000}, {"operation":"sell", "unit-cost":20.00, "quantity": 3000}]
+```
+
+### Outros Casos
+Consulte a lista completa de exemplos fornecida inicialmente.
+
+---
+
+## Estrutura de Desenvolvimento
+
+O projeto utiliza DDD para separar responsabilidades, tornando o código mais claro e de fácil manutenção. As principais camadas são:
+
+1. **Application**:
+   - Regras de negócio e casos de uso.
+   - Classes auxiliares como DTOs e Responses.
+2. **Domain**:
+   - Modelos de domínio e contratos.
+
+Em projetos maiores, camadas adicionais como **Infrastructure** e **API** podem ser adicionadas.
+
+---
+
+## Tecnologias Utilizadas
+
+- .NET Core C#
+- Docker
+- Testes Unitários com `dotnet test`
+
+
+---
+
+##Documentação do proejto
 Para a solução proposta no case eu escolhi a stack .net core C# por ter mais familiaridade.
 Para arquitetura da solução foi criado utilizando DDD por dar mais clareza em relação aos caso de uso e dominios da da aplicação, assim como clean code para apoiar na clareza organização e legibilidade do código fazendo a separação da aplicação 
 nas seguintes pasta:
