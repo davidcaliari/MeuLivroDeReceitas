@@ -73,6 +73,8 @@ Caso o **.NET SDK** não esteja instalado, siga os passos abaixo para instalá-l
 
 ### 2. Executar Localmente
 
+- **Nota**: Para facilitar os testes de quem estiver avaliando, a solução permite que instruções sejam passadas sem a necessidade de finalizar a aplicação.
+
 1. Abra o terminal (CMD, PowerShell ou equivalente).
 2. Navegue até a pasta onde o arquivo `Nubk_Case.csproj` está localizado.
 3. Caso deseje inserir manualmente, execute apenas:
@@ -88,7 +90,7 @@ Caso o **.NET SDK** não esteja instalado, siga os passos abaixo para instalá-l
 
 ```bash
    dotnet run < input.txt
-   ```
+```
    - **Nota**: Onde input.txt é o arquivo que contém os dados no formato esperado pela aplicação (exemplo em JSON). Este comando executará a aplicação e fornecerá o conteúdo do arquivo input.txt como entrada para o processo. O arquivo deve estar na pasta onde se encontra o arquivo `Nubk_Case.csproj`.
 7. Para encerrar a aplicação, pressione **Enter** sem inserir nenhum input.
 
@@ -141,11 +143,10 @@ Caso o **Docker** não esteja instalado, siga os passos abaixo para instalá-lo:
    - **Nota**: Certifique-se de que o texto do input está em uma única linha, pois ao copiar do PDF ele pode ficar formatado incorretamente.
 5. Após o resultado ser exibido, a tela irá aguardar o pressionamento de **Enter** para ser limpa e em seguida um novo input poderá ser inserido.
 6. Para executar a aplicação com um arquivo de entrada, execute o comando:
- Para executar a aplicação com um arquivo de entrada, execute o comando:
 
 ```bash
    docker build -t nubk_case . && docker run -i nubk_case < Nubk_Case/input.txt
-   ```
+```
    - **Nota**: Onde input.txt é o arquivo que contém os dados no formato esperado pela aplicação (exemplo em JSON). Este comando executará a aplicação e fornecerá o conteúdo do arquivo input.txt como entrada para o processo. O arquivo deve estar na pasta onde se encontra o arquivo `Nubk_Case.csproj`.
 7. Para encerrar a aplicação, pressione **Enter** sem inserir nenhum input.
 
@@ -172,5 +173,4 @@ Caso o **Docker** não esteja instalado, siga os passos abaixo para instalá-lo:
 Consulte a lista completa de exemplos fornecida inicialmente.
 
 ---
-
 
