@@ -27,7 +27,7 @@ Nubk_Case/
 │   ├── UseCases/
 │   │   └── TaxOperation/
 │   │       ├── OperationType.cs
-│   │       └── OperationDto.cs
+│   │       └── OperationVO.cs
 │   │       └── PriceWeightedVO.cs
 │   │       └── TaxVO.cs
 ├── Program.cs
