@@ -23,11 +23,11 @@ Nubk_Case/
 │   │   └── TaxOperation/
 │   │       ├── ITaxOperationApplication.cs
 │   │       ├── TaxOperationApplication.cs
-│   │       └── OperationDto.cs
 ├── Domain/
 │   ├── UseCases/
 │   │   └── TaxOperation/
 │   │       ├── OperationType.cs
+│   │       └── OperationDto.cs
 │   │       └── PriceWeightedVO.cs
 │   │       └── TaxVO.cs
 ├── Program.cs
@@ -36,7 +36,7 @@ Nubk_Case/
     ├── IntegrationTests/
     │   └── ProgramTests/
     │       └── ProgramTest.cs
-    ├── UnitTests/
+	├── UnitTests/
     │   └── TaxOperationTests/
     │       └── TaxOperationApplicatonTest.cs            
 ```
