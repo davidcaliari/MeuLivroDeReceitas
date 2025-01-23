@@ -21,6 +21,7 @@ Nubk_Case/
 ├── Application/
 │   ├── UseCases/
 │   │   └── TaxOperation/
+│   │       ├── ITaxOperationApplication.cs
 │   │       ├── TaxOperationApplication.cs
 │   │       └── OperationDto.cs
 ├── Domain/
