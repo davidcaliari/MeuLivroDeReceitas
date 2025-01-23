@@ -19,25 +19,25 @@ Em projetos maiores, camadas adicionais como **Infrastructure** e **API** podem 
 Nubk_Case/
 │
 ├── Application/
-│   ├── ConsoleWrapper/
-│   │   ├── ConsoleWrapper.cs
-│   │   └── IConsoleWrapper.cs
 │   ├── UseCases/
-│   │   └── Operation/
-│   │       ├── OperationApplication.cs
-│   │       ├── OperationDto.cs
-│   │       ├── OperationResponse.cs
-│   │       └── OperationWeighted.cs
+│   │   └── TaxOperation/
+│   │       ├── TaxOperationApplication.cs
+│   │       └── OperationDto.cs
 ├── Domain/
-│   └── Program.cs
+│   ├── UseCases/
+│   │   └── TaxOperation/
+│   │       ├── OperationType.cs
+│   │       └── PriceWeightedVO.cs
+│   │       └── TaxVO.cs
+├── Program.cs
 │
 └── Nubk_CaseTest/
     ├── IntegrationTests/
-    │   └── OperationTests/
-    │       └── OperationApplicationTest.cs
-	├── UnitTests/
     │   └── ProgramTests/
     │       └── ProgramTest.cs
+	├── UnitTests/
+    │   └── TaxOperationTests/
+    │       └── TaxOperationApplicatonTest.cs            
 ```
 
 ---
@@ -152,7 +152,7 @@ Caso o **Docker** não esteja instalado, siga os passos abaixo para instalá-lo:
 
 ### 2. Executar em um Container Docker
 
-1. Abra o terminal e navegue até a pasta raiz do projeto, onde o arquivo `Dockerfile` está localizado.
+
 - Para executar a aplicação com entrada manual:
   ```bash
   docker build -t nubk_case . && docker run -it nubk_case
